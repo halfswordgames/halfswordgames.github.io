@@ -24,21 +24,3 @@ window.addEventListener('scroll', function() {
 // Customize game trailer section
 const gameTrailer = document.getElementById('game-trailer');
 gameTrailer.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/frYuzf3N9Vs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-
-// Customize screenshot showcase section
-const screenshotShowcase = document.getElementById('screenshot-showcase');
-for (let i = 1; i <= 6; i++) {
-  const screenshot = document.createElement('img');
-  screenshot.src = `screenshots/screenshot${i}.jpg`;
-  screenshot.alt = `Screenshot ${i}`;
-  screenshotShowcase.appendChild(screenshot);
-}
-
-// Customize concept art section
-const conceptArt = document.getElementById('concept-art');
-for (let i = 1; i <= 4; i++) {
-  const artPiece = document.createElement('img');
-  artPiece.src = `concept-art/art${i}.jpg`;
-  artPiece.alt = `Concept Art ${i}`;
-  conceptArt.appendChild(artPiece);
-}
