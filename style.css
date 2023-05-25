@@ -1,17 +1,25 @@
-html, body, ul, li, h1, h2, h3, p, form, input, textarea, button {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Global styles */
+html, body {
+  height: 100%;
+}
+
 body {
   background-image: url("images/wallpaperbg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed; /* Fix the background image */
   font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0; /* Remove the default margin */
+  padding: 0; /* Remove the default padding */
 }
+
 
 .container {
   max-width: 1200px;
@@ -22,22 +30,32 @@ body {
 /* Header styles */
 header {
   background-color: #000;
-  padding: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #fff; /* Add a bottom border */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align items horizontally */
 }
+
 
 header nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 header nav ul li {
-  margin: 0 10px;
+  margin-left: 10px; /* Adjust the margin to create space between the navigation items */
+}
+
+/* Add right margin to the last navigation item */
+header nav ul li:last-child {
+  margin-right: 10px;
 }
 
 header nav ul li a {
@@ -53,17 +71,65 @@ header nav ul li a:hover {
   color: #e6b317;
 }
 
+nav input[type="checkbox"] {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+nav ul li {
+  margin-left: 15px;
+}
+
+/* Show/hide menu on mobile devices */
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    font-size: 20px;
+    margin-right: 15px;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 10px;
+    z-index: 99;
+  }
+
+  nav ul li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  input[type="checkbox"]:checked + .menu-icon + ul {
+    display: flex;
+  }
+}
+
 #social-links {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Adjust the margin to create space between the buttons and navigation items */
 }
 
 #social-links a {
-  margin-right: 10px;
+  margin-left: 10px;
 }
-
 /* Home section */
 #home {
   text-align: center;
@@ -82,8 +148,23 @@ header nav ul li a:hover {
   margin-bottom: 40px;
 }
 
+/* Header styles */
+header.scrolled {
+  background-color: #000;
+}
+
+/* Game trailer styles */
 #game-trailer {
-  margin-top: 40px;
+  padding-top: 56.25%; /* Maintain aspect ratio for the video container */
+  position: relative;
+}
+
+#game-trailer .video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* About section */
