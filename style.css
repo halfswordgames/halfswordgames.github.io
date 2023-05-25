@@ -1,4 +1,15 @@
-html, body, ul, li, h1, h2, h3, p, form, input, textarea, button {
+html,
+body,
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+form,
+input,
+textarea,
+button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,10 +17,10 @@ html, body, ul, li, h1, h2, h3, p, form, input, textarea, button {
 
 /* Global styles */
 body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f7f7f7;
+  background-image: url("/images/wallpaperbg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
@@ -18,6 +29,7 @@ body {
   padding: 0 20px;
 }
 
+/* Header styles */
 header {
   background-color: #000;
   padding: 10px 0;
@@ -28,17 +40,17 @@ header {
   z-index: 100;
 }
 
-header ul {
+header nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
 }
 
-header ul li {
+header nav ul li {
   margin: 0 10px;
 }
 
-header ul li a {
+header nav ul li a {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
@@ -47,7 +59,7 @@ header ul li a {
   transition: color 0.3s ease;
 }
 
-header ul li a:hover {
+header nav ul li a:hover {
   color: #e6b317;
 }
 
@@ -105,84 +117,27 @@ header ul li a:hover {
   margin-top: 40px;
 }
 
-/* Features section */
-#features {
-  text-align: center;
-  padding: 100px 0;
-}
-
-#features h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-#features h2 {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
 /* Gallery section */
-#gallery {
+#AboutDev {
   text-align: center;
   padding: 100px 0;
 }
 
-#gallery h1 {
+#AboutDev h1 {
   font-size: 36px;
   margin-bottom: 20px;
 }
 
-#gallery h2 {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
-#screenshot-showcase,
-#concept-art {
+#screenshot-showcase {
   margin-top: 40px;
 }
 
-/* Community section */
-#community {
-  text-align: center;
-  padding: 100px 0;
+#screenshot-showcase img {
+  max-width: 100%;
 }
 
-#community h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-#community h2 {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
-#community-highlights,
-#social-media,
-#news-updates {
-  margin-top: 40px;
-}
-
-/* Contact section */
-#contact {
-  text-align: center;
-  padding: 100px 0;
-}
-
-#contact h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-#contact h2 {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
-#contact-info,
-#contact-form {
-  margin-top: 40px;
+#screenshot-showcase p {
+  margin-top: 20px;
 }
 
 /* Footer */
@@ -200,55 +155,4 @@ footer p {
 footer a {
   color: #e6b317;
   text-decoration: none;
-}
-
-@media (max-width: 768px) {
-  /* Responsive styles for small screens */
-  #home h1 {
-    font-size: 36px;
-  }
-
-  #home h2 {
-    font-size: 20px;
-  }
-
-  #about h1 {
-    font-size: 24px;
-  }
-
-  #about h2 {
-    font-size: 18px;
-  }
-
-  #features h1 {
-    font-size: 24px;
-  }
-
-  #features h2 {
-    font-size: 18px;
-  }
-
-  #gallery h1 {
-    font-size: 24px;
-  }
-
-  #gallery h2 {
-    font-size: 18px;
-  }
-
-  #community h1 {
-    font-size: 24px;
-  }
-
-  #community h2 {
-    font-size: 18px;
-  }
-
-  #contact h1 {
-    font-size: 24px;
-  }
-
-  #contact h2 {
-    font-size: 18px;
-  }
 }
