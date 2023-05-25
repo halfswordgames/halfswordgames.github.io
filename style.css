@@ -17,12 +17,11 @@ button {
 
 /* Global styles */
 body {
-  background-image: url("/images/wallpaperbg.png");
+  background-image: url("images/wallpaperbg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
