@@ -25,7 +25,7 @@ window.addEventListener('scroll', function() {
 
 // Customize game trailer section
 const gameTrailer = document.getElementById('game-trailer');
-gameTrailer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+gameTrailer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/watch?v=frYuzf3N9Vs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
 // Customize screenshot showcase section
 const screenshotShowcase = document.getElementById('screenshot-showcase');
