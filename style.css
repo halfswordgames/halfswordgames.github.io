@@ -1,121 +1,254 @@
-/* Global Styles */
+html, body, ul, li, h1, h2, h3, p, form, input, textarea, button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3 {
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
   color: #333;
+  background-color: #f7f7f7;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Header Styles */
 header {
-  background-color: #f9f9f9;
-  padding: 10px;
-  text-align: center;
+  background-color: #000;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
-nav ul li {
-  display: inline;
-  margin-right: 10px;
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
-nav ul li a {
+header ul li {
+  margin: 0 10px;
+}
+
+header ul li a {
   text-decoration: none;
-  color: #333;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+  color: #e6b317;
+}
+
+#social-links {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
 }
 
 #social-links a {
   margin-right: 10px;
 }
 
-/* Home Styles */
+/* Home section */
 #home {
-  background-color: #fff;
-  padding: 50px 0;
   text-align: center;
+  padding: 100px 0;
+}
+
+#home h1 {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#home h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 40px;
 }
 
 #game-trailer {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-/* About Styles */
+/* About section */
 #about {
-  background-color: #f9f9f9;
-  padding: 50px 0;
   text-align: center;
+  padding: 100px 0;
 }
 
-#game-description, #gameplay {
-  margin-top: 20px;
+#about h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-/* Features Styles */
+#about h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+#game-description,
+#gameplay {
+  margin-top: 40px;
+}
+
+/* Features section */
 #features {
-  background-color: #fff;
-  padding: 50px 0;
   text-align: center;
+  padding: 100px 0;
 }
 
-/* Gallery Styles */
+#features h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#features h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+/* Gallery section */
 #gallery {
-  background-color: #f9f9f9;
-  padding: 50px 0;
   text-align: center;
+  padding: 100px 0;
 }
 
-#screenshot-showcase, #concept-art {
-  margin-top: 20px;
+#gallery h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-/* Community Styles */
+#gallery h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+#screenshot-showcase,
+#concept-art {
+  margin-top: 40px;
+}
+
+/* Community section */
 #community {
-  background-color: #fff;
-  padding: 50px 0;
   text-align: center;
+  padding: 100px 0;
 }
 
-#community-highlights, #social-media, #news-updates {
-  margin-top: 20px;
+#community h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-/* Contact Styles */
+#community h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+#community-highlights,
+#social-media,
+#news-updates {
+  margin-top: 40px;
+}
+
+/* Contact section */
 #contact {
-  background-color: #f9f9f9;
-  padding: 50px 0;
   text-align: center;
+  padding: 100px 0;
 }
 
-#contact-info, #contact-form {
-  margin-top: 20px;
+#contact h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-/* Footer Styles */
+#contact h2 {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+#contact-info,
+#contact-form {
+  margin-top: 40px;
+}
+
+/* Footer */
 footer {
-  background-color: #f9f9f9;
-  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
   text-align: center;
 }
 
-/* Media Queries */
+footer p {
+  margin-bottom: 10px;
+}
+
+footer a {
+  color: #e6b317;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
-  h1 {
-    font-size: 24px;
+  /* Responsive styles for small screens */
+  #home h1 {
+    font-size: 36px;
   }
-  
-  h2 {
+
+  #home h2 {
     font-size: 20px;
   }
-  
-  h3 {
+
+  #about h1 {
+    font-size: 24px;
+  }
+
+  #about h2 {
+    font-size: 18px;
+  }
+
+  #features h1 {
+    font-size: 24px;
+  }
+
+  #features h2 {
+    font-size: 18px;
+  }
+
+  #gallery h1 {
+    font-size: 24px;
+  }
+
+  #gallery h2 {
+    font-size: 18px;
+  }
+
+  #community h1 {
+    font-size: 24px;
+  }
+
+  #community h2 {
+    font-size: 18px;
+  }
+
+  #contact h1 {
+    font-size: 24px;
+  }
+
+  #contact h2 {
     font-size: 18px;
   }
 }
