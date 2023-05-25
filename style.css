@@ -1,15 +1,4 @@
-html,
-body,
-ul,
-li,
-h1,
-h2,
-h3,
-p,
-form,
-input,
-textarea,
-button {
+html, body, ul, li, h1, h2, h3, p, form, input, textarea, button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,7 +10,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  font-family: Arial, sans-serif;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -116,6 +107,13 @@ header nav ul li a:hover {
   margin-top: 40px;
 }
 
+#game-description ul,
+#gameplay ul {
+  text-align: left;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
 /* Gallery section */
 #AboutDev {
   text-align: center;
@@ -133,6 +131,7 @@ header nav ul li a:hover {
 
 #screenshot-showcase img {
   max-width: 100%;
+  height: auto;
 }
 
 #screenshot-showcase p {
