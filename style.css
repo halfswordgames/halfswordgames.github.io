@@ -152,19 +152,6 @@ nav ul li {
 header.scrolled {
   background-color: #000;
 }
-
-#game-trailer {
-  padding-top: 0; /* Remove the padding */
-  position: relative;
-}
-
-#game-trailer .video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-}
 /* About section */
 #about {
   text-align: center;
