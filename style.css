@@ -29,7 +29,7 @@ body {
 
 /* Header styles */
 header {
-  background-color: #000;
+  background-color: grey;
   padding: 10px;
   border-bottom: 1px solid #fff; /* Add a bottom border */
   position: fixed;
