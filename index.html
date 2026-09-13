@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Half Sword Games</title>
   <meta name="description" content="Half Sword is a physics-driven medieval combat simulator built in Unreal Engine 5. Control every swing with your mouse as a commoner-turned-knight fighting brutal 15th-century tournaments. Now in Early Access on Steam and Epic Games Store.">
-  <meta name="theme-color" content="#0e0c0b">
+  <meta name="theme-color" content="#181817">
 
   <!-- Open Graph / Twitter -->
   <!-- images/og-image.jpg is a 1200×630 composite of the wax-seal logo on the site background.
@@ -27,10 +27,12 @@
   <meta name="twitter:description" content="Every swing is yours to control. A physics-driven medieval combat simulator, now in Early Access on Steam and Epic Games Store.">
   <meta name="twitter:image" content="https://halfswordgames.github.io/images/og-image.jpg">
 
-  <!-- Same HsIconA artwork as before, resized: the 601px original was 568 KB for a favicon. -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/game-logo/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="images/game-logo/favicon-192.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="images/game-logo/hs-mark-144.png">
+  <!-- Tab / home-screen icons: the studio logo on the site ground (#181817).
+       favicon.ico sits at the repo root because browsers request /favicon.ico on their own. -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/company-logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/company-logo/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/company-logo/apple-touch-icon.png">
 
   <!-- The hero still is the largest above-the-fold image; tell the browser to fetch it first. -->
   <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high">
@@ -54,7 +56,12 @@
     "genre": ["Action", "Simulation"],
     "gamePlatform": "PC",
     "applicationCategory": "Game",
-    "author": { "@type": "Organization", "name": "Half Sword Games" },
+    "author": {
+      "@type": "Organization",
+      "name": "Half Sword Games",
+      "url": "https://halfswordgames.github.io/",
+      "logo": "https://halfswordgames.github.io/images/company-logo/hsg-logo-512.png"
+    },
     "publisher": { "@type": "Organization", "name": "Game Seer Publishing" },
     "sameAs": [
       "https://store.steampowered.com/app/2397300/Half_Sword/",
@@ -72,12 +79,12 @@
 
   <header class="site-header" id="site-header">
     <div class="site-header__inner">
+      <!-- Studio logo (images/company-logo/hsg-logo-white.png, white on transparent, 394×480).
+           It already reads "Half Sword Games", so there is no text next to it; the link's
+           aria-label carries the name for screen readers. One PNG serves every screen: it is
+           shown at 56px tall (48px on small phones), so 480px covers 3x displays and the footer. -->
       <a class="brand" href="#home" aria-label="Half Sword Games — home">
-        <picture>
-          <source type="image/webp" srcset="images/game-logo/hs-mark-72.webp 1x, images/game-logo/hs-mark-144.webp 2x">
-          <img class="brand__icon" src="images/game-logo/hs-mark-72.png" srcset="images/game-logo/hs-mark-144.png 2x" alt="" width="36" height="36">
-        </picture>
-        <span class="brand__name">Half Sword Games</span>
+        <img class="brand__logo" src="images/company-logo/hsg-logo-white.png" alt="" width="394" height="480" decoding="async">
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
@@ -315,8 +322,7 @@
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__brand">
-        <img src="images/game-logo/hs-mark-72.png" srcset="images/game-logo/hs-mark-144.png 2x" alt="" width="28" height="28" loading="lazy">
-        <span>Half Sword Games</span>
+        <img class="site-footer__logo" src="images/company-logo/hsg-logo-white.png" alt="Half Sword Games" width="394" height="480" loading="lazy" decoding="async">
       </div>
 
       <nav class="site-footer__links" aria-label="Footer">

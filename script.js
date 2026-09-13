@@ -1,7 +1,7 @@
 /* Half Sword — script.js
    Vanilla JS, loaded with `defer`. No dependencies.
    Modules: header state, mobile nav, smooth anchors, scroll reveals,
-   hero video handling, gallery lightbox, footer year. */
+   hero video handling, Steam widget fit, gallery lightbox, footer year. */
 
 (function () {
   'use strict';
@@ -219,8 +219,28 @@
   }
 
   /* ------------------------------------------------------------------
+     Steam widget: the official embed is a fixed 646×190 document and does
+     not reflow. Scale it (transform only) to the width it actually has,
+     and keep the wrapper's height in step, so phones see the whole widget.
+     ------------------------------------------------------------------ */
+  const steamWrap = doc.querySelector('.steam-widget');
+  const steamFrame = steamWrap && steamWrap.querySelector('iframe');
+  if (steamWrap && steamFrame) {
+    const NATIVE_W = 646, NATIVE_H = 190;
+    function fitSteam() {
+      const s = Math.min(1, steamWrap.clientWidth / NATIVE_W);
+      steamFrame.style.transform = s < 1 ? 'scale(' + s.toFixed(4) + ')' : '';
+      steamWrap.style.height = Math.round(NATIVE_H * s) + 'px';
+    }
+    if ('ResizeObserver' in window) new ResizeObserver(fitSteam).observe(steamWrap);
+    else window.addEventListener('resize', fitSteam, { passive: true });
+    fitSteam();
+  }
+
+  /* ------------------------------------------------------------------
      Gallery lightbox on <dialog>. Native focus trap + Escape + top layer.
-     Arrow keys move between images. Clicking the backdrop closes.
+     Arrow keys and touch swipes move between images. Clicking the
+     backdrop closes. Page scroll is locked while it is open.
      ------------------------------------------------------------------ */
   const lightbox = doc.getElementById('lightbox');
   const items = Array.prototype.slice.call(doc.querySelectorAll('.gallery__item'));
@@ -235,7 +255,17 @@
       index = (i + items.length) % items.length;
       const btn = items[index];
       const thumb = btn.querySelector('img');
-      img.src = btn.dataset.full || (thumb ? thumb.currentSrc || thumb.src : '');
+      const next = btn.dataset.full || (thumb ? thumb.currentSrc || thumb.src : '');
+      // Cross-fade: hide, swap, show again once the new file has frames.
+      // `load` fires even for cached images, so this never sticks at opacity 0;
+      // `error` is handled the same way so a missing file doesn't leave it blank.
+      if (img.getAttribute('src') !== next) {
+        img.classList.add('is-loading');
+        const reveal = function () { img.classList.remove('is-loading'); };
+        img.addEventListener('load', reveal, { once: true });
+        img.addEventListener('error', reveal, { once: true });
+        img.src = next;
+      }
       img.alt = thumb ? thumb.alt : '';
       caption.textContent = btn.dataset.caption || '';
     }
@@ -244,6 +274,7 @@
       opener = sourceEl;
       render(i);
       lightbox.showModal();
+      doc.body.classList.add('is-locked');
       // Next frame so the transition runs from the initial state.
       window.requestAnimationFrame(function () { lightbox.classList.add('is-shown'); });
       lightbox.querySelector('[data-lightbox-close]').focus({ preventScroll: true });
@@ -253,11 +284,29 @@
       lightbox.classList.remove('is-shown');
       const finish = function () {
         if (lightbox.open) lightbox.close();
+        doc.body.classList.remove('is-locked');
         img.removeAttribute('src');   /* src="" is treated as "this page's URL" by some browsers */
         if (opener) opener.focus({ preventScroll: true });
       };
-      reduceMotion.matches ? finish() : window.setTimeout(finish, 240);
+      reduceMotion.matches ? finish() : window.setTimeout(finish, 260);
     }
+
+    // Touch/pen swipe: a mostly-horizontal drag of 48px+ steps to the next/previous image.
+    let swipeX = null, swipeY = null, lastSwipe = 0;
+    lightbox.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return;
+      swipeX = e.clientX; swipeY = e.clientY;
+    });
+    lightbox.addEventListener('pointerup', function (e) {
+      if (swipeX === null) return;
+      const dx = e.clientX - swipeX, dy = e.clientY - swipeY;
+      swipeX = swipeY = null;
+      if (Math.abs(dx) >= 48 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        lastSwipe = Date.now();
+        render(dx < 0 ? index + 1 : index - 1);
+      }
+    });
+    lightbox.addEventListener('pointercancel', function () { swipeX = swipeY = null; });
 
     items.forEach(function (btn, i) {
       btn.addEventListener('click', function () { open(i, btn); });
@@ -275,9 +324,10 @@
     // Native Escape fires `cancel`; route it through our close so focus returns.
     lightbox.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
 
-    // Click on the backdrop (outside the figure and buttons) closes.
+    // Click on the backdrop (outside the figure and buttons) closes — unless that
+    // "click" is the tail end of a swipe that happened to start on the backdrop.
     lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) close();
+      if (e.target === lightbox && Date.now() - lastSwipe > 400) close();
     });
   }
 
