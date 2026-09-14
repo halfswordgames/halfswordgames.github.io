@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games — Half Sword Games</title>
+  <meta name="description" content="Games by Half Sword Games: Half Sword, a physics-driven medieval combat simulator in Early Access on Steam and Epic Games Store.">
+  <meta name="theme-color" content="#181817">
+  <link rel="canonical" href="https://halfswordgames.github.io/games/">
+
+  <!-- Open Graph / Twitter
+       STUDIO: change the absolute URLs (canonical, og:url, og:image, twitter:image and the JSON-LD block)
+       to your custom domain once the CNAME is live. images/og-image.jpg is a 1200×630 share image. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Half Sword Games">
+  <meta property="og:title" content="Games — Half Sword Games">
+  <meta property="og:description" content="Everything we're making. Right now, that's Half Sword.">
+  <meta property="og:url" content="https://halfswordgames.github.io/games/">
+  <meta property="og:image" content="https://halfswordgames.github.io/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@halfsword_game">
+  <meta name="twitter:title" content="Games — Half Sword Games">
+  <meta name="twitter:description" content="Everything we're making. Right now, that's Half Sword.">
+  <meta name="twitter:image" content="https://halfswordgames.github.io/images/og-image.jpg">
+
+  <!-- Tab / home-screen icons: the HSG sword mark, white on transparent, generated from
+       images/company-logo/HSG_Sword_Logo_001_WB.png. favicon.ico sits at the repo root because
+       browsers request /favicon.ico on their own. -->
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/company-logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../images/company-logo/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/company-logo/apple-touch-icon.png">
+
+  <!-- The whole site is set in Arial (a system font), so there is no webfont to load. -->
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Half Sword Games",
+    "url": "https://halfswordgames.github.io/",
+    "logo": "https://halfswordgames.github.io/images/company-logo/hsg-logo-512.png",
+    "foundingDate": "2023-12",
+    "sameAs": [
+      "https://discord.com/invite/DDVTfcjYEv",
+      "https://www.youtube.com/@HalfSwordGames",
+      "https://twitter.com/halfsword_game?lang=en"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <!-- Studio logo (images/company-logo/hsg-logo-white.png, white on transparent, 394×480).
+           It already reads "Half Sword Games", so there is no text next to it; the link's
+           aria-label carries the name for screen readers. -->
+      <a class="brand" href="../" aria-label="Half Sword Games — home">
+        <img class="brand__logo" src="../images/company-logo/hsg-logo-white.png" alt="" width="394" height="480" decoding="async">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="./" aria-current="page">Games</a></li>
+          <li><a href="../#team">Team</a></li>
+          <li><a href="../#community">Community</a></li>
+        </ul>
+        <div class="site-nav__store">
+          <a class="btn btn--primary btn--small" href="https://store.steampowered.com/app/2397300/Half_Sword/">Play on Steam</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="page-hero" aria-labelledby="games-title">
+      <div class="container">
+        <h1 class="page-hero__title" id="games-title">Games</h1>
+        <p class="page-hero__lead">Everything we're making. Right now that is one game, and it has our full attention.</p>
+      </div>
+    </section>
+
+    <!-- ===================== LISTING ===================== -->
+    <section class="section" aria-label="Game list">
+      <div class="container">
+        <!-- One card per title. To add a game later, copy the <article> and point it at /games/<slug>/. -->
+
+        <article class="game-card">
+          <a class="game-card__media" href="../games/halfsword/" aria-label="Half Sword — about the game" tabindex="-1">
+            <img src="../images/screenshots/ss1.jpg" alt="" loading="lazy" decoding="async">
+          </a>
+          <div class="game-card__body">
+            <h3 class="game-card__title">
+              <a href="../games/halfsword/">
+                <img class="game-card__wordmark" src="../images/game-logo/logo-banner-720.png" srcset="../images/game-logo/logo-banner-1440.png 2x" alt="Half Sword" width="720" height="173" loading="lazy" decoding="async">
+              </a>
+            </h3>
+            <ul class="badges" aria-label="Release status">
+              <li class="badge">Early Access</li>
+              <li class="badge">Unreal Engine 5</li>
+              <li class="badge">PC</li>
+            </ul>
+            <p class="game-card__desc">A physics-driven medieval combat simulator. You start as a commoner in 15th-century Europe and fight through brutal tournaments for a knight's place — every swing driven by your mouse, every wound simulated.</p>
+            <div class="game-card__actions">
+              <a class="btn btn--primary" href="../games/halfsword/">About the game</a>
+              <a class="btn btn--secondary" href="https://store.steampowered.com/app/2397300/Half_Sword/">
+                <img class="btn__icon" src="../images/icons/Steam_black.svg" alt="" width="22" height="22">
+                Play on Steam
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <img class="site-footer__logo" src="../images/company-logo/hsg-logo-white.png" alt="Half Sword Games" width="394" height="480" loading="lazy" decoding="async">
+      </div>
+
+      <nav class="site-footer__links" aria-label="Footer">
+        <a href="../">Home</a>
+        <a href="./">Games</a>
+        <a href="halfsword/">Half Sword</a>
+        <a href="../#team">Team</a>
+        <a href="../#community">Community</a>
+      </nav>
+
+      <ul class="site-footer__social" aria-label="Social and store links">
+        <li><a href="https://discord.com/invite/DDVTfcjYEv" aria-label="Discord"><img src="../images/icons/discord.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://store.steampowered.com/app/2397300/Half_Sword/" aria-label="Steam"><img src="../images/icons/Steam_black.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://store.epicgames.com/en-US/p/half-sword-99f48a" aria-label="Epic Games Store"><img src="../images/icons/epicgames_black.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://www.youtube.com/@HalfSwordGames" aria-label="YouTube"><img src="../images/icons/Youtube_black.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://twitter.com/halfsword_game?lang=en" aria-label="X / Twitter"><img src="../images/icons/Twitter_black.svg" alt="" width="24" height="24"></a></li>
+      </ul>
+
+      <p class="site-footer__copy">&copy; <span id="year">2026</span> Half Sword Games. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -15,6 +15,22 @@
   root.classList.add('js');
 
   /* ------------------------------------------------------------------
+     Local preview. Internal links point at folders (games/halfsword/) so the
+     live site has clean URLs; a web server serves the index.html inside each
+     folder on its own. Opened straight from disk (file://) there is no server,
+     so a folder link shows a directory listing instead. Point those links at
+     the file itself in that one case. On http(s) this does nothing.
+     ------------------------------------------------------------------ */
+  if (location.protocol === 'file:') {
+    doc.querySelectorAll('a[href]').forEach(function (a) {
+      const href = a.getAttribute('href');
+      if (/^(?!https?:|#)[^?#]*\/(#.*)?$/.test(href)) {
+        a.setAttribute('href', href.replace(/\/(#.*)?$/, '/index.html$1'));
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Header: gains a background once the page is scrolled.
      rAF-throttled so the scroll handler never runs more than once per frame.
      ------------------------------------------------------------------ */

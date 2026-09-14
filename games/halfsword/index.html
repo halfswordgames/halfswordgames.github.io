@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Half Sword — Physics-Based Medieval Combat | Half Sword Games</title>
+  <meta name="description" content="Half Sword is a physics-driven medieval combat simulator built in Unreal Engine 5. Control every swing with your mouse as a commoner-turned-knight fighting brutal 15th-century tournaments. Now in Early Access on Steam and Epic Games Store.">
+  <meta name="theme-color" content="#181817">
+  <link rel="canonical" href="https://halfswordgames.github.io/games/halfsword/">
+
+  <!-- Open Graph / Twitter
+       STUDIO: change the absolute URLs (canonical, og:url, og:image, twitter:image and the JSON-LD block)
+       to your custom domain once the CNAME is live. images/og-image.jpg is a 1200×630 share image. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Half Sword Games">
+  <meta property="og:title" content="Half Sword — Physics-Based Medieval Combat">
+  <meta property="og:description" content="Every swing is yours to control. A physics-driven medieval combat simulator, now in Early Access on Steam and Epic Games Store.">
+  <meta property="og:url" content="https://halfswordgames.github.io/games/halfsword/">
+  <meta property="og:image" content="https://halfswordgames.github.io/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@halfsword_game">
+  <meta name="twitter:title" content="Half Sword — Physics-Based Medieval Combat">
+  <meta name="twitter:description" content="Every swing is yours to control. A physics-driven medieval combat simulator, now in Early Access on Steam and Epic Games Store.">
+  <meta name="twitter:image" content="https://halfswordgames.github.io/images/og-image.jpg">
+
+  <!-- Tab / home-screen icons: the HSG sword mark, white on transparent, generated from
+       images/company-logo/HSG_Sword_Logo_001_WB.png. favicon.ico sits at the repo root because
+       browsers request /favicon.ico on their own. -->
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/company-logo/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../images/company-logo/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/company-logo/apple-touch-icon.png">
+
+  <!-- The hero still is the largest above-the-fold image; tell the browser to fetch it first. -->
+  <link rel="preload" as="image" href="../../images/hero.jpg" fetchpriority="high">
+  <!-- The whole site is set in Arial (a system font), so there is no webfont to load. -->
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../script.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Half Sword",
+    "url": "https://halfswordgames.github.io/games/halfsword/",
+    "image": "https://halfswordgames.github.io/images/og-image.jpg",
+    "description": "A physics-driven medieval combat simulator built in Unreal Engine 5. Control every swing with your mouse as a commoner-turned-knight fighting brutal 15th-century tournaments.",
+    "genre": ["Action", "Simulation"],
+    "gamePlatform": "PC",
+    "applicationCategory": "Game",
+    "author": {
+      "@type": "Organization",
+      "name": "Half Sword Games",
+      "url": "https://halfswordgames.github.io/",
+      "logo": "https://halfswordgames.github.io/images/company-logo/hsg-logo-512.png"
+    },
+    "publisher": { "@type": "Organization", "name": "Game Seer Publishing" },
+    "sameAs": [
+      "https://store.steampowered.com/app/2397300/Half_Sword/",
+      "https://store.epicgames.com/en-US/p/half-sword-99f48a",
+      "https://discord.com/invite/DDVTfcjYEv",
+      "https://www.youtube.com/@HalfSwordGames",
+      "https://twitter.com/halfsword_game?lang=en"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <!-- Studio logo (images/company-logo/hsg-logo-white.png, white on transparent, 394×480).
+           It already reads "Half Sword Games", so there is no text next to it; the link's
+           aria-label carries the name for screen readers. -->
+      <a class="brand" href="../../" aria-label="Half Sword Games — home">
+        <img class="brand__logo" src="../../images/company-logo/hsg-logo-white.png" alt="" width="394" height="480" decoding="async">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="#about">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#community">Community</a></li>
+        </ul>
+        <div class="site-nav__store">
+          <a class="btn btn--primary btn--small" href="https://store.steampowered.com/app/2397300/Half_Sword/">Play on Steam</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero hero--game" id="home" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <!--
+          Hero media, two layers:
+            1. images/hero.jpg — always loaded, slow zoom. This is what phones, reduced-motion users
+               and Save-Data users see. (Currently 4.8 MB — see ASSETS-TODO.md for a one-line resize.)
+            2. vids/hero-loop.mp4 — 1280×542, 8.5 MB. NOT in the HTML as a <source>; script.js attaches
+               it only on viewports ≥ 768px with no data-saver / reduced-motion, then fades it in once
+               it is actually playing. If you add a WebM version, set data-webm="../../vids/hero-loop.webm".
+        -->
+        <img class="hero__still" src="../../images/hero.jpg" alt="" fetchpriority="high" decoding="async">
+        <video class="hero__video" muted loop playsinline preload="none"
+               width="1280" height="542"
+               data-mp4="../../vids/hero-loop.mp4"></video>
+      </div>
+      <div class="hero__scrim"></div>
+
+      <div class="hero__content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../../">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="../">Games</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Half Sword</span>
+        </nav>
+        <h1 class="hero__title" id="hero-title">
+          <!-- The parchment-banner logo is the game wordmark, so it is the h1. Two sizes of the same
+               1893×454 artwork: logo-banner-720.png (1x) and logo-banner-1440.png (2x). -->
+          <img class="hero__wordmark" src="../../images/game-logo/logo-banner-720.png" srcset="../../images/game-logo/logo-banner-1440.png 2x" alt="Half Sword" width="720" height="173" fetchpriority="high">
+        </h1>
+        <p class="hero__hook">Physics-driven medieval combat. Every swing is yours to control.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://store.steampowered.com/app/2397300/Half_Sword/">
+            <img class="btn__icon" src="../../images/icons/Steam_black.svg" alt="" width="22" height="22">
+            Play on Steam
+          </a>
+          <a class="btn btn--secondary" href="https://store.epicgames.com/en-US/p/half-sword-99f48a">
+            <img class="btn__icon" src="../../images/icons/epicgames_black.svg" alt="" width="22" height="22">
+            Get it on Epic Games Store
+          </a>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#trust" aria-label="Scroll to next section">
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===================== TRUST STRIP ===================== -->
+    <section class="trust" id="trust" aria-label="Store status">
+      <div class="container trust__inner">
+        <ul class="badges" aria-label="Release status">
+          <li class="badge">Early Access</li>
+          <li class="badge">Unreal Engine 5</li>
+        </ul>
+        <div class="steam-widget">
+          <!-- Official Steamworks store widget: live price, review score and wishlist button. Nothing hardcoded. -->
+          <iframe src="https://store.steampowered.com/widget/2397300/" title="Half Sword on Steam — live price and reviews"
+                  width="646" height="190" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="section__title" id="about-title" data-reveal>A commoner. A blade. A tournament that wants you dead.</h2>
+        <p class="about__lead" data-reveal>Half Sword is an immersive, physically simulated medieval combat game. You start as a commoner in 15th-century Europe and fight your way through brutal tournaments to earn a knight's place — one swing at a time.</p>
+
+        <div class="about__grid" data-reveal-group>
+          <div class="about__item" data-reveal>
+            <h3>Your mouse is the weapon</h3>
+            <p>There are no canned attack animations. Your mouse drives the blade directly, so every cut, thrust and parry is something you did — and every mistake is yours too.</p>
+          </div>
+          <div class="about__item" data-reveal>
+            <h3>Arm yourself</h3>
+            <p>Build a fighter that suits your style with authentic arms and armor: swords and shields, plate and helmets. What you wear changes how you move and what you can survive.</p>
+          </div>
+          <div class="about__item" data-reveal>
+            <h3>Duels and melees</h3>
+            <p>One-on-one duels demand precision. Group battles demand awareness. Each mode asks for different tactics, and the arena is unforgiving either way.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+    <section class="section features" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <h2 class="section__title" id="features-title" data-reveal>What makes it different</h2>
+        <ul class="feature-list" data-reveal-group>
+          <li class="feature" data-reveal>
+            <h3>Physics-driven ragdoll combat</h3>
+            <p>Bodies, limbs and weapons are simulated, not animated. Momentum, weight and balance decide the outcome of a clash — closer to a physical simulation than a combo system.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <h3>Historically styled arms and armor</h3>
+            <p>Weapons and harness modeled on 15th-century European equipment. Armor stops what it should stop, and leaves open what it should leave open.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <h3>A damage system that doesn't hold back</h3>
+            <p>Cuts go where the edge lands. Wounds slow you, bleed you and end you. The gore is heavy and it is the point: you feel the weight of every hit.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <h3>Duels and arena melees</h3>
+            <p>Face a single opponent or a crowd. Different modes, different rhythms, the same rule: stay standing.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 class="section__title" id="gallery-title" data-reveal>Gallery</h2>
+        <!--
+          Screenshots live in images/screenshots/ss1.jpg … ss6.jpg. The same file is used as the tile and
+          the lightbox image, so nothing downloads twice. Each tile is cropped to 16:9 by CSS, whatever the
+          source aspect ratio; the lightbox shows the uncropped file.
+          STUDIO: write a real alt for each (what is happening in the shot) — alt is also read out in the
+          lightbox — and, if you want a visible caption, add data-caption="…" on the button.
+        -->
+        <ul class="gallery__grid" data-reveal-group>
+          <li data-reveal>
+            <button class="gallery__item" type="button" data-full="../../images/screenshots/ss1.jpg">
+              <img src="../../images/screenshots/ss1.jpg" alt="Half Sword screenshot 1" loading="lazy" decoding="async">
+            </button>
+          </li>
+          <li data-reveal>
+            <button class="gallery__item" type="button" data-full="../../images/screenshots/ss2.jpg">
+              <img src="../../images/screenshots/ss2.jpg" alt="Half Sword screenshot 2" loading="lazy" decoding="async">
+            </button>
+          </li>
+          <li data-reveal>
+            <button class="gallery__item" type="button" data-full="../../images/screenshots/ss3.jpg">
+              <img src="../../images/screenshots/ss3.jpg" alt="Half Sword screenshot 3" loading="lazy" decoding="async">
+            </button>
+          </li>
+          <li data-reveal>
+            <button class="gallery__item" type="button" data-full="../../images/screenshots/ss4.jpg">
+              <img src="../../images/screenshots/ss4.jpg" alt="Half Sword screenshot 4" loading="lazy" decoding="async">
+            </button>
+          </li>
+          <li data-reveal>
+            <button class="gallery__item" type="button" data-full="../../images/screenshots/ss5.jpg">
+              <img src="../../images/screenshots/ss5.jpg" alt="Half Sword screenshot 5" loading="lazy" decoding="async">
+            </button>
+          </li>
+          <li data-reveal>
+            <button class="gallery__item" type="button" data-full="../../images/screenshots/ss6.jpg">
+              <img src="../../images/screenshots/ss6.jpg" alt="Half Sword screenshot 6" loading="lazy" decoding="async">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== COMMUNITY ===================== -->
+    <section class="section community" id="community" aria-labelledby="community-title">
+      <div class="container">
+        <h2 class="section__title" id="community-title" data-reveal>Follow the development</h2>
+        <p class="community__lead" data-reveal>Patch notes, clips, and a lot of people falling over. Come find us.</p>
+        <ul class="community__list" data-reveal-group>
+          <li data-reveal>
+            <a class="community__link" href="https://discord.com/invite/DDVTfcjYEv">
+              <img src="../../images/icons/discord.svg" alt="" width="40" height="40">
+              <span class="community__label">Discord</span>
+              <span class="community__sub">Talk to the devs and other players</span>
+            </a>
+          </li>
+          <li data-reveal>
+            <a class="community__link" href="https://www.youtube.com/@HalfSwordGames">
+              <img src="../../images/icons/Youtube_black.svg" alt="" width="40" height="40">
+              <span class="community__label">YouTube</span>
+              <span class="community__sub">Trailers and dev updates</span>
+            </a>
+          </li>
+          <li data-reveal>
+            <a class="community__link" href="https://twitter.com/halfsword_game?lang=en">
+              <img src="../../images/icons/Twitter_black.svg" alt="" width="40" height="40">
+              <span class="community__label">X / Twitter</span>
+              <span class="community__sub">Announcements as they happen</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <img class="site-footer__logo" src="../../images/company-logo/hsg-logo-white.png" alt="Half Sword Games" width="394" height="480" loading="lazy" decoding="async">
+      </div>
+
+      <nav class="site-footer__links" aria-label="Footer">
+        <a href="../../">Home</a>
+        <a href="../">Games</a>
+        <a href="./">Half Sword</a>
+        <a href="../../#team">Team</a>
+        <a href="#community">Community</a>
+      </nav>
+
+      <ul class="site-footer__social" aria-label="Social and store links">
+        <li><a href="https://discord.com/invite/DDVTfcjYEv" aria-label="Discord"><img src="../../images/icons/discord.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://store.steampowered.com/app/2397300/Half_Sword/" aria-label="Steam"><img src="../../images/icons/Steam_black.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://store.epicgames.com/en-US/p/half-sword-99f48a" aria-label="Epic Games Store"><img src="../../images/icons/epicgames_black.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://www.youtube.com/@HalfSwordGames" aria-label="YouTube"><img src="../../images/icons/Youtube_black.svg" alt="" width="24" height="24"></a></li>
+        <li><a href="https://twitter.com/halfsword_game?lang=en" aria-label="X / Twitter"><img src="../../images/icons/Twitter_black.svg" alt="" width="24" height="24"></a></li>
+      </ul>
+
+      <p class="site-footer__copy">&copy; <span id="year">2026</span> Half Sword Games. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox: native <dialog> gives us focus trapping, Escape-to-close and a top-layer overlay for free. -->
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Previous image">
+      <span aria-hidden="true">&#8249;</span>
+    </button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" src="" alt="">
+      <figcaption class="lightbox__caption"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Next image">
+      <span aria-hidden="true">&#8250;</span>
+    </button>
+  </dialog>
+</body>
+</html>

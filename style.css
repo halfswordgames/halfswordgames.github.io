@@ -5,6 +5,7 @@
    accent colour — emphasis is done with the ivory itself (inverted buttons,
    hairlines, the blade edge on feature cards), exactly like the card.
    Motion is transform/opacity only and fully disabled under reduced motion.
+   Shared by every page: / (studio home), /games/ (listing) and /games/halfsword/.
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
@@ -220,7 +221,8 @@ h1, h2, h3 {
   transition: transform 260ms var(--ease-out);
 }
 .site-nav__list a:hover::after,
-.site-nav__list a:focus-visible::after { transform: scaleX(1); }
+.site-nav__list a:focus-visible::after,
+.site-nav__list a[aria-current="page"]::after { transform: scaleX(1); }
 
 /* Hamburger (mobile only) */
 .nav-toggle {
@@ -444,6 +446,10 @@ h1, h2, h3 {
 }
 /* On short landscape phones the hint would sit on the buttons. */
 @media (max-height: 560px) { .hero__scroll { display: none; } }
+/* Once the page is scrolled the hint has done its job; hiding it also stops it peeking through
+   the translucent header when the next section is scrolled to the top. */
+.hero__scroll { transition: opacity 300ms; }
+.site-header.is-scrolled + main .hero__scroll { opacity: 0; pointer-events: none; }
 
 @media (min-width: 1024px) {
   .hero__content { text-align: left; }
@@ -452,6 +458,54 @@ h1, h2, h3 {
   .hero__hook { margin-left: 0; max-width: 26ch; font-size: var(--step-2); letter-spacing: -0.01em; }
   .hero__actions { justify-content: flex-start; }
 }
+
+/* ---------- Hero variant for game pages ----------
+   Same footage and sequence as the home hero, a little shorter so the store
+   status and the overview arrive without a full screen of scrolling. */
+.hero--game {
+  min-height: 84vh;
+  min-height: 84svh;
+}
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: var(--step--1);
+  color: var(--paper-2);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 800ms var(--ease-out) 40ms forwards;
+}
+.breadcrumb a { text-decoration: none; transition: color 200ms; }
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible { color: var(--paper); }
+.breadcrumb [aria-current="page"] { color: var(--paper); }
+@media (min-width: 1024px) { .breadcrumb { justify-content: flex-start; } }
+
+/* ---------- Page hero (pages without footage, e.g. /games/) ---------- */
+.page-hero {
+  padding: calc(var(--header-h) + var(--space-l)) 0 var(--space-m);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(to bottom, var(--ink-2), var(--ink));
+}
+.page-hero__title { font-size: var(--step-3); }
+.page-hero__lead {
+  margin-top: 1rem;
+  max-width: 52ch;
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--paper-2);
+}
+.page-hero__title, .page-hero__lead {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 800ms var(--ease-out) forwards;
+}
+.page-hero__title { animation-delay: 80ms; }
+.page-hero__lead  { animation-delay: 220ms; }
 
 /* ---------- Trust strip ---------- */
 .trust {
@@ -680,6 +734,69 @@ h1, h2, h3 {
   .lightbox__nav--next { right: 1rem; }
 }
 
+/* ---------- Game card (home and /games/) ----------
+   One card per title. Media on the left at desktop widths, stacked on phones.
+   The whole media area and the wordmark are links to the game page; the
+   buttons underneath go to the page and to Steam. */
+.game-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  overflow: hidden;
+  transition: border-color 260ms;
+}
+.game-card + .game-card { margin-top: var(--space-s); }
+.game-card__media {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink);
+}
+.game-card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 800ms var(--ease-out);
+}
+.game-card__media::after {         /* soft vignette so the media blends into the card */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 24, 23, 0.55), transparent 45%);
+  pointer-events: none;
+}
+.game-card__body {
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.game-card__title { margin: 0; line-height: 0; }
+.game-card__title a { display: inline-block; }
+.game-card__wordmark {
+  width: min(100%, 340px);
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+}
+.game-card__body .badges { justify-content: flex-start; }
+.game-card__desc { color: var(--paper-2); max-width: 46ch; }
+.game-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+@media (max-width: 479.98px) {
+  .game-card__actions { flex-direction: column; align-items: stretch; }
+  .game-card__actions .btn { width: 100%; }
+}
+@media (min-width: 900px) {
+  .game-card { grid-template-columns: 1.15fr 1fr; }
+  .game-card__media { aspect-ratio: auto; min-height: 380px; }
+  .game-card__media::after { background: linear-gradient(to right, transparent 60%, rgba(30, 30, 29, 0.85)); }
+}
+
 /* ---------- Team ---------- */
 .team__inner {
   display: grid;
@@ -800,6 +917,8 @@ h1, h2, h3 {
   .lightbox__close:hover { border-color: var(--paper); transform: scale(1.05); }
   .lightbox__nav:hover { border-color: var(--paper); transform: translateY(-50%) scale(1.05); }
   .community__link:hover { transform: translateY(-3px); border-color: var(--line-hi); background: var(--ink-3); }
+  .game-card:hover { border-color: var(--line-hi); }
+  .game-card:hover .game-card__media img { transform: scale(1.04); }
   .site-footer__social a:hover { opacity: 1; transform: translateY(-2px); }
 }
 
@@ -832,6 +951,8 @@ h1, h2, h3 {
   .hero__still { animation: none; transform: none; }
   .hero__title, .hero__hook, .hero__actions { opacity: 1; transform: none; animation: none; }
   .hero__wordmark { transform: none; animation: none; }
+  .breadcrumb, .page-hero__title, .page-hero__lead { opacity: 1; transform: none; animation: none; }
+  .game-card:hover .game-card__media img { transform: none; }
   .hero__scroll-line { animation: none; opacity: 1; }
   .js [data-reveal] { opacity: 1; transform: none; }
   .lightbox__figure { opacity: 1; transform: none; }
