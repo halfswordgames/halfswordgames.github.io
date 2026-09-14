@@ -18,6 +18,8 @@
   --paper-2:  #9b9994;                    /* secondary text */
   --line:     rgba(226, 226, 217, 0.14);  /* rules, borders */
   --line-hi:  rgba(226, 226, 217, 0.42);  /* stronger borders */
+  --blood:    #a4201a;                    /* primary button — the wax red from the original design */
+  --blood-hi: #c8291f;                    /* primary button hover */
 
   --font: Arial, "Helvetica Neue", Helvetica, sans-serif;
 
@@ -125,13 +127,12 @@ h1, h2, h3 {
 }
 .btn:active { transform: translateY(0) scale(0.98); }
 
-/* Primary is the card inverted: ivory ground, ink text, black icon. */
+/* Primary is the original wax red with ivory text; the Steam icon stays inverted to white. */
 .btn--primary {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--paper);
+  background: var(--blood);
+  color: var(--paper);
+  border-color: var(--blood);
 }
-.btn--primary .btn__icon { filter: none; }
 
 .btn--secondary {
   background: rgba(24, 24, 23, 0.55);
@@ -907,7 +908,7 @@ h1, h2, h3 {
    hover exists, which also keeps the tap-to-open gallery feeling instant. */
 @media (hover: hover) and (pointer: fine) {
   .btn:hover { transform: translateY(-2px); }
-  .btn--primary:hover { background: var(--paper-hi); border-color: var(--paper-hi); }
+  .btn--primary:hover { background: var(--blood-hi); border-color: var(--blood-hi); }
   .btn--secondary:hover { border-color: var(--paper); }
   .site-nav__list a:hover { opacity: 1; }
   .feature:hover { background: var(--ink-2); }
